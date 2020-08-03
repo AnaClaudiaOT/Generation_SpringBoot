@@ -37,10 +37,10 @@ public class AlunoController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/nome/{nome}")
+	/*@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Aluno>> getByName(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome)); 
-	}
+	}*/
 	
 	@PostMapping
 	public ResponseEntity<Aluno> post (@RequestBody Aluno aluno){
@@ -49,7 +49,7 @@ public class AlunoController {
 	
 	@PutMapping
 	public ResponseEntity<Aluno> put (@RequestBody Aluno aluno){
-		return ResponseEntity.ok(repository.save(aluno));
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(aluno));
 	}
 
 	@DeleteMapping("/{id}")

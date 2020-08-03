@@ -10,26 +10,29 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_aluno")
-public class Aluno {
-	
+@Table(name = "tb_turma")
+public class Turma {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotNull
-	private String nome;
-	
+	@Size(min = 1, max = 30)
+	private String turma;
+
 	@NotNull
-	private boolean matriculado;
+	private boolean ativo;
 	
-	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("aluno")
-	private List<Turma> turma;
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("turma")
+	private List<Aluno> aluno;
+	
 
 	public long getId() {
 		return id;
@@ -39,30 +42,30 @@ public class Aluno {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public boolean isMatriculado() {
-		return matriculado;
-	}
-
-	public void setMatriculado(boolean matriculado) {
-		this.matriculado = matriculado;
-	}
-
-	public List<Turma> getTurma() {
+	public String getTurma() {
 		return turma;
 	}
 
-	public void setTurma(List<Turma> turma) {
+	public void setTurma(String turma) {
 		this.turma = turma;
 	}
-	
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public List<Aluno> getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(List<Aluno> aluno) {
+		this.aluno = aluno;
+	}
+
 	
 
 }

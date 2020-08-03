@@ -38,10 +38,10 @@ public class TurmaController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/turma/{turma}")
+	/*@GetMapping("/turma/{turma}")
 	public ResponseEntity<List<Turma>> GetByTurma (@PathVariable String turma){
 		return ResponseEntity.ok(repository.findAllByTurmaContainingIgnoreCase(turma));			//	retorna os parametros inseridos pelo usuario do que contem no banco de dados deste atributo
-	}
+	}*/
 	
 	@PostMapping
 	public ResponseEntity<Turma> post (@RequestBody Turma turma){								//insere um novo dado
